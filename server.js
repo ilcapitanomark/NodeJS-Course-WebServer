@@ -1,7 +1,8 @@
 const express = require('express'); //the web server
 const hbs = require('hbs');         //for templating html pages
 const logger = require('./logger');
-const maintenance = true;
+const maintenance = false;
+const webPort = process.env.PORT || 3000;
 
 var app = express();
 
@@ -69,7 +70,6 @@ app.get('/maintenance', (request, response) => {
   });
 });
 
-var webPort = 3000;
 app.listen(webPort, () => {
   console.log('Web server starting');
   var logMessage = `Web server starting on port ${webPort}`;
