@@ -10,7 +10,7 @@ hbs.registerPartials(__dirname + '/views/partials');   //this is to have snippet
 app.set('view engine', 'hbs');
 
 app.use((request, response,  next) => {
-  var logMessage = `${request.method} ${request.url}`;
+  var logMessage = `${request.method} ${response.statusCode} ${request.url}`;
   var logFunction = '';
   var logLevel = 'I';
   logger.logger(logMessage, logFunction, logLevel);
@@ -62,11 +62,11 @@ app.get('/about', (request, response) => {
   });
 });
 
-app.get('/maintenance', (request, response) => {
+app.get('/project', (request, response) => {
   //response.send('<h1>hallo Express</h1>');
-  response.render('maintenance.hbs', {
-    pageTitle: 'Maintenance Page',
-    welcomeMessage: 'WebSite in maintenance mode'
+  response.render('project.hbs', {
+    pageTitle: 'Project Page',
+    welcomeMessage: 'WebSite project page'
   });
 });
 
